@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         txtShowTextResult = findViewById(R.id.txtDisplay);
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        final String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyBrJ3ec9wTuS6L-xHkaXLU8BJbFsx_LZ9o";
+        final String url = "https://api.yelp.com/v3/businesses/search?term=jackbox&latitude=33.9188589&longitude=-118.3483256";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     StringBuilder formattedResult = new StringBuilder();
-                    JSONArray responseJSONArray = response.getJSONArray("results");
+                    JSONArray responseJSONArray = response.getJSONArray("businesses");
                     for (int i = 0; i < responseJSONArray.length(); i++) {
                         formattedResult.append("\n" + responseJSONArray.getJSONObject(i).get("name") + "=> \t" + responseJSONArray.getJSONObject(i).get("rating"));
                     }
