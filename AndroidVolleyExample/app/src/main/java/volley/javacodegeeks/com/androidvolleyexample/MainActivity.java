@@ -15,6 +15,21 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
+    OkHttpClient client = new OkHttpClient();
+
+    Request request = new Request.Builder()
+            .url("https://api.yelp.com/v3/businesses/search?term=jackbox&latitude=33.9188589&longitude=-118.3483256")
+            .get()
+            .addHeader("Authorization", "Bearer,Bearer 2LDFBclwVmzMFhe11RbTXELWmIkv74zZl3cFQGGV_zLOUZDtLE6-plW5O4AStCHBv-8XTpxNKDSyCOwAQkyjdbRKLRa7EmmCY2OgUkEUbI9JApedJuNsAi80ofppXXYx")
+            .addHeader("cache-control", "no-cache")
+            .addHeader("Postman-Token", "249ffbaa-4ea0-4e02-b8d6-77159d91740b")
+            .build();
+
+    Response response = client.newCall(request).execute();
+
+
+
+
 
     private TextView txtShowTextResult;
 
